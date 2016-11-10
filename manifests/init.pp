@@ -36,11 +36,14 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 class role_php ( 
-  $php_memory_limit = '64M',
+  $settings = undef,
   ) {
 
   class { '::php':
-    php_memory_limit => $php_memory_limit,
+    settings => $settings,
+  }
+
+  class { '::php':
     extensions => {
       bcmath  => { },
       imagick => {
