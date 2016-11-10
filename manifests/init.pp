@@ -35,7 +35,27 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class role_php {
+class role_php ( 
+  $php_memory_limit = '64M',
+  ) {
 
+  class { '::php':
+    php_memory_limit => $php_memory_limit,
+    extensions => {
+      bcmath  => { },
+      imagick => {
+        provider => pecl,
+      },
+      xmlrpc => { },
+      apc    => {
+        provider => 'pecl',
+        settings => {
+          'apc/stat'       => '1',
+          'apc/stat_ctime' => '1',
+        },
+        sapi => 'fpm',
+      },
+    },
+  }
 
 }
