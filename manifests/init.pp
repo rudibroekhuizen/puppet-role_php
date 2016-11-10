@@ -35,27 +35,14 @@
 #
 # Copyright 2016 Your name here, unless otherwise noted.
 #
-class role_php ( 
-  $settings = undef,
+class role_php (
+  $settings   = undef,
+  $extensions = undef,
   ) {
 
   class { '::php':
-    settings => $settings,
-    extensions => {
-      bcmath  => { },
-      imagick => {
-        provider => pecl,
-      },
-      xmlrpc => { },
-      apc    => {
-        provider => 'pecl',
-        settings => {
-          'apc/stat'       => '1',
-          'apc/stat_ctime' => '1',
-        },
-        sapi => 'fpm',
-      },
-    },
+    settings   => $settings,
+    extensions => $extensions,
   }
 
 }
