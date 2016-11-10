@@ -41,9 +41,6 @@ class role_php (
 
   class { '::php':
     settings => $settings,
-  }
-
-  class { '::php':
     extensions => {
       bcmath  => { },
       imagick => {
