@@ -46,8 +46,8 @@ class role_php (
   }
 
   # PDO database extension
-  package { 'php-mysql':
-    ensure => installed
-  }
+  #package { 'php-mysql':
+  #  ensure => installed
+  #}
 
 }
