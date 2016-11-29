@@ -36,13 +36,21 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 class role_php (
-  $settings   = undef,
-  $extensions = undef,
+  $settings    = undef,
+  $extensions  = undef,
+  $php_version = undef,
+  $config_root = undef,
   ) {
 
+  class { '::php::globals':
+    php_version => $php_version,
+    config_root => $config_root
+  } ->
+
   class { '::php':
-    settings   => $settings,
-    extensions => $extensions,
+    settings     => $settings,
+    extensions   => $extensions,
+    manage_repos => true,
   }
 
 }
